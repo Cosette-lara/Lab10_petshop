@@ -48,4 +48,11 @@ public class Pet {
 		this.ownerId = owner_id;
 		this.birthDate = birthDate;
 	}
+
+	public Pet(String name, int type_id, int owner_id) {
+		super();
+		this.name = name;
+		this.typeId = type_id;
+		this.ownerId = owner_id;
+	}
 }

@@ -20,8 +20,9 @@ public class Visit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "pet_id", nullable = false)
-    private Integer petId;
+    @ManyToOne
+    @JoinColumn(name = "pet_id", nullable = false) // No necesitas insertable = false y updatable = false aquí
+    private Pet pet;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "visit_date")
@@ -30,22 +31,18 @@ public class Visit {
     @Column(name = "description", length = 255)
     private String description;
 
-    @ManyToOne
-    @JoinColumn(name = "pet_id", insertable = false, updatable = false)
-    private Pet pet;
-
     public Visit() {
     }
 
-    public Visit(Integer id, Integer petId, Date visitDate, String description) {
+    public Visit(Integer id, Pet pet, Date visitDate, String description) {
         this.id = id;
-        this.petId = petId;
+        this.pet = pet;
         this.visitDate = visitDate;
         this.description = description;
     }
 
-    public Visit(Integer petId, Date visitDate, String description) {
-        this.petId = petId;
+    public Visit(Pet pet, Date visitDate, String description) {
+        this.pet = pet;
         this.visitDate = visitDate;
         this.description = description;
     }

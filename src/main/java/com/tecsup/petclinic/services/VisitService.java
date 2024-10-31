@@ -1,4 +1,4 @@
 package com.tecsup.petclinic.services;
 
-public class VisitServiceImpl {
+public interface VisitService {
 }
